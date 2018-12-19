@@ -1,0 +1,15 @@
+.tabbar-box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    height: 50px;
+    bottom: 0;
+    background: white;
+}
+.tabbar-box .tab-item{
+    display: flex;
+    align-items: center;;
+    justify-content: center;
+    flex-grow: 1;
+}
