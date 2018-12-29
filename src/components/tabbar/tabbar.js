@@ -1,5 +1,6 @@
 import React ,{ Component } from  'react';
 import './tabbar.css'
+import { Route , Router,link  } from "react-router-dom"
 
 class Tabbar extends Component {
     render(){
@@ -12,7 +13,11 @@ class Tabbar extends Component {
         )
     }
     itemclick(e){
-        console.log(e.target.getAttribute("data-itemid"))
+        let tabindex= e.target.getAttribute("data-itemid")
+        if(tabindex===2){
+            
+        }
+        
     }
 }
 
