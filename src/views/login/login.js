@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import './login.css'
-// import aaa  from "../../api/axios.init"
-import aaa  from "../../unitl/request"
+import {  BrowserRouter as Router, Route, Link  } from "react-router-dom"
 
+import aaa  from "../../unitl/request"
+// import { Router } from "react-router"
+import playlist from "../playlist/playlist"
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -24,7 +26,7 @@ class Login extends Component {
                     <div className="form-item">
                         <input type="text" placeholder="请输入密码"  onChange={(e)=>this.hanlderChangePass(e)} value={this.state.password} />
                     </div>
-                    <div className="btn" onClick={this.login}>登录</div>
+                    <div className="btn" onClick={this.login}  >登录</div>
                 </div>
         )
 
@@ -46,11 +48,15 @@ class Login extends Component {
     login(){
 
         var that =this
-        aaa.get("http://47.96.24.35:3000/login/cellphone?phone="+ that.state.phone +"&password="+that.state.password,true)
-        .then(function(res){
-            console.log(res)
-         
+        aaa.get("http://47.96.24.35:3000/login/cellphone?phone="+ that.state.phone +"&password="+that.state.password+"&proxy=http://47.96.24.35:3000",true,function(res){
+            console.log(res);
+            if(res.code==200){
+                console.log(res.header["Set-Cookie"])
+                that.props.history.push("playlist");
+                // onClick={() => this.props.history.push('detail')}
+            }
         })
+       
     }
 }
 

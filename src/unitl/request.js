@@ -80,9 +80,9 @@ axios.interceptors.response.use((response) => {
 const defaultConfig = { showLoading: true }
 export default {
     get: (url, config,callback) => axios.get(url,{ ...defaultConfig, ...config },callback).then(function(res){
-      
-        if (res.statusCode == 200) {
-            if (res.data.code == 400) {
+        console.log(res.data.code)
+        if (res.data.code === 200) {
+            if (res.data.code === 400) {
                alert("aaa")
             } else {
                 callback && callback(res.data)
@@ -90,10 +90,6 @@ export default {
         } else {
            alert("系统繁忙")
         }
-    }).catch(function(err){
-        alert("aaa")
-        Message.error('账号和密码不能为空')
-        console.log(Message)
     }),
     put: (url, data, config) => axios.put(url, data, { ...defaultConfig, ...config }),
     post: (url, data, config) => axios.post(url, data, { ...defaultConfig, ...config }),
